@@ -11,7 +11,7 @@ test('Login - acesso à página de login', async ({ page }) => {
   );
 
   await expect(
-    page.getByText('Login or sign up to continue')
+    page.getByText('TEXTO QUE NAO EXISTE')
   ).toBeVisible();
 
 });
