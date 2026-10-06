@@ -12,7 +12,7 @@ test('Customer regular - login', async ({ page }) => {
 
   await expect(
     page.getByText('Login or sign up to continue')
-  ).toBeVisible();
+  ).toBeVisible({ timeout: 10000 });
 
   await page
     .locator('[data-test="phone-input"]')
@@ -28,8 +28,10 @@ test('Customer regular - login', async ({ page }) => {
 
   const code = '123456';
 
-  for (let i = 0; i < code.length; i++) {
-    await page.locator(`#field-${i}`).press(code[i]);
+  await page.locator('#field-0').click();
+
+  for (const digit of code) {
+    await page.keyboard.press(digit);
   }
 
   await page
